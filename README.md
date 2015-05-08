@@ -8,13 +8,15 @@ I used "flag" to do the flag-parsing, it is a little strict (ie. no combining fl
 # Building
 To keep the binary sizes small (around 20-30kb each, on my PC) I use the gccgo compiler.
 You can build each tool like so:
+
     go build -compiler gccgo x.go
 where x.go refers to whichever source file you want to compile (eg. cat.go or yes.go)
 When it is done building the source file it will place a binary file in the same location.
 The binary file will have the same name as the source file but without the .go (eg. cat.go becomes cat)
 
 # Running
-As long as you are in the same directory as the compiled program, you can run it like so
+As long as you are in the same directory as the compiled program, you can run it like so:
+
     ./x
 Where x refers to the name of the program
 
