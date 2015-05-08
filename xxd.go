@@ -19,9 +19,10 @@ func safestring(bytes []byte) string {
 }
 
 func dump(bytes []byte, columns int) {
+	//Make sure bytes has an even amount of items
 	if len(bytes)%2 == 1 {
 		bytes = append(bytes, 0x00)
-	} //Make sure bytes has an even amount of items
+	}
 	w := 0      // Used to count how many words printed in each line
 	space := "" // Used to insert whitespace between words
 	for i := 0; i < len(bytes); i++ {
@@ -32,18 +33,21 @@ func dump(bytes []byte, columns int) {
 		if w == 0 {
 			fmt.Printf("%07x: ", i)
 		}
+		// Put a space every two bytes
 		if i%2 == 1 {
 			space = " "
 		} else {
 			space = ""
-		} // Put a space every two bytes
+		}
+		// If the last byte is empty, don't print it
 		if i == len(bytes)-1 && bytes[i] == 0x00 {
-		} else { // If the last byte is empty, don't print it
+		} else {
 			fmt.Printf("%02x%s", bytes[i], space)
 		}
 		w++
 	}
-	if w > 0 { // If the last line is not full
+	// If the last line is not full add whitespace
+	if w > 0 {
 		for i := w; i <= columns; i++ {
 			fmt.Printf("  ")
 			if i%2 == 1 {
