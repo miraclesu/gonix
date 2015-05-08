@@ -5,6 +5,7 @@ Clones of the *nix tools written in go
 If a program is marked complete, then most/all the standard features are implemented.
 * basename [works]
 * cat [works]
+* cp [works, very incomplete]
 * dirname [**complete**]
 * echo [works]
 * false [**complete**]
