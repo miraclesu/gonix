@@ -4,6 +4,6 @@ import "fmt"
 import "os"
 
 func main() {
-    wd, _ := os.Getwd()
-    fmt.Println(wd);
+	wd, _ := os.Getwd()
+	fmt.Println(wd)
 }
