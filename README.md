@@ -1,6 +1,24 @@
 # gonix
 Clones of the *nix tools written in go
 
+# Status
+If a program is marked complete, then most/all the standard features are implemented.
+* basename [works]
+* cat [works]
+* dirname [works, **complete**]
+* echo [works]
+* false [works, **complete**]
+* head [works]
+* mkdir [works]
+* pwd [works]
+* seq [works]
+* sleep [works, **complete**]
+* tail [works]
+* tee [works, **complete**]
+* true [works, **complete**]
+* xxd [works]
+* yes [works, **complete**]
+
 # Bugs
 Many tools do not exist and many features are not implemented.
 I used "flag" to do the flag-parsing, it is a little strict (ie. no combining flags like -xyz instead of -x -y -z).
