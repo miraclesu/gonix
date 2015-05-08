@@ -20,6 +20,14 @@ If a program is marked complete, then most/all the standard features are impleme
 * xxd [works]
 * yes [**complete**]
 
+Unimplemented:
+* bc
+* dc
+* ed
+* ls
+* more
+* rm
+
 # Bugs
 Many tools do not exist and many features are not implemented.
 I used "flag" to do the flag-parsing, it is a little strict (ie. no combining flags like -xyz instead of -x -y -z).
