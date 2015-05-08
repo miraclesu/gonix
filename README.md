@@ -5,19 +5,19 @@ Clones of the *nix tools written in go
 If a program is marked complete, then most/all the standard features are implemented.
 * basename [works]
 * cat [works]
-* dirname [works, **complete**]
+* dirname [**complete**]
 * echo [works]
-* false [works, **complete**]
+* false [**complete**]
 * head [works]
 * mkdir [works]
 * pwd [works]
 * seq [works]
-* sleep [works, **complete**]
+* sleep [**complete**]
 * tail [works]
-* tee [works, **complete**]
-* true [works, **complete**]
+* tee [**complete**]
+* true [**complete**]
 * xxd [works]
-* yes [works, **complete**]
+* yes [**complete**]
 
 # Bugs
 Many tools do not exist and many features are not implemented.
