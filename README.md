@@ -6,13 +6,17 @@ Many tools do not exist and many features are not implemented.
 I used "flag" to do the flag-parsing, it is a little strict (ie. no combining flags like -xyz instead of -x -y -z).
 
 # Building
-To keep the binary sizes small (around 20-30kb each, on my PC) I use the gccgo compiler.
-You can build each tool like so:
+To keep the binary sizes small (around 20-30kb each, on my PC) I use the gccgo compiler, so you need to have that installed.
 
-    go build -compiler gccgo x.go
-where x.go refers to whichever source file you want to compile (eg. cat.go or yes.go)
-When it is done it will place a binary file in the same location.
-The binary file will have the same name as the source file but without the .go (eg. cat.go becomes cat)
+I haven't wrote a Makefile yet, but in the meantime I am using a very simple build script.
+
+You *must* be in the same directory that the source code is in when running the build script.
+
+To run it:
+
+    sh build.sh
+
+It will compile each program and the binaries will be placed in the same directory.
 
 **TODO:** Write a Makefile.
 
