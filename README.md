@@ -11,6 +11,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * false [**complete**]
 * head [works]
 * mkdir [works]
+* nl [works]
 * pwd [works]
 * seq [works]
 * sleep [**complete**]
