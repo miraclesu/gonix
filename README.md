@@ -16,6 +16,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * sleep [**complete**]
 * tail [works]
 * tee [**complete**]
+* touch [works]
 * true [**complete**]
 * xxd [works]
 * yes [**complete**]
