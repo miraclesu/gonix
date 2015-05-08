@@ -20,7 +20,7 @@ As long as you are in the same directory as the compiled program, you can run it
     ./x
 Where x refers to the name of the program
 
-**WARNING:** Keep the binaries in a directory that is NOT on your $PATH or they may end up being run instead of your system's commands.
+**WARNING:** Keep the programs in a directory **NOT** in your $PATH or they may end up being run *instead* of your system's commands.
 
 # License
 I am releasing this under the terms of the GNU GPLv3 license with **ABSOLUTELY NO WARRANTY OR LIABILITY**.
