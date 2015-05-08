@@ -13,11 +13,12 @@ func main() {
 		bytes, _ := ioutil.ReadAll(os.Stdin)
 		lines := strings.Split(string(bytes), "\n")
 		var end int
+		//Make sure we don't print more lines than there are
 		if *n > len(lines)-1 {
 			end = len(lines) - 1
 		} else {
 			end = *n
-		} //Make sure we don't print more lines than there are
+		}
 		for i := (len(lines) - 1 - (end)); i < len(lines)-1; i++ {
 			fmt.Println(lines[i])
 		}
@@ -26,14 +27,16 @@ func main() {
 			bytes, _ := ioutil.ReadFile(flag.Arg(j))
 			lines := strings.Split(string(bytes), "\n")
 			var end int
+			//Make sure we don't print more lines than there are
 			if *n > len(lines)-1 {
 				end = len(lines) - 1
 			} else {
 				end = *n
-			} //Make sure we don't print more lines than there are
+			}
+			//Only show a title for each file if there are multiple files
 			if len(flag.Args()) > 1 {
 				fmt.Printf("==> %s <==\n", flag.Arg(j))
-			} //Only show a title for each file if there are multiple files
+			}
 			for i := (len(lines) - 1 - (end)); i < len(lines)-1; i++ {
 				fmt.Println(lines[i])
 			}
