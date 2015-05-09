@@ -32,7 +32,7 @@ Unimplemented:
 # Misc
 Someone else had the same idea (of writing all the tools in Go) a while before mine.
 https://github.com/EricLagerg/go-coreutils
-His project is more mature than mine, and he said he'd love some help.
+His project is way more mature than mine and he said he'd love some help.
 
 # Bugs
 Many tools do not exist and many features are not implemented.
