@@ -1,20 +1,31 @@
 package main
 
-import "os"
-import "fmt"
-import "log"
-import "io/ioutil"
+import (
+	"io"
+	"log"
+	"os"
+)
 
 func main() {
 	if len(os.Args) == 1 {
-		bytes, err := ioutil.ReadAll(os.Stdin)
-		if (err != nil) {log.Fatal(err)}
-		fmt.Printf("%s", string(bytes))
+		if _, err := io.Copy(os.Stdout, os.Stdin); err != nil {
+			log.Fatal(err)
+		}
 	} else {
 		for i := 1; i < len(os.Args); i++ {
-			bytes, err := ioutil.ReadFile(os.Args[i])
-			if (err != nil) {log.Fatal(err)}
-			fmt.Printf("%s", string(bytes))
+			if err := catFile(os.Args[i]); err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
+}
+
+func catFile(path string) error {
+	file, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	_, err = io.Copy(os.Stdout, file)
+	return err
 }
