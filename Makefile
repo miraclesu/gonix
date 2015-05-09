@@ -1,7 +1,7 @@
 # Targets:
 # all: Build code.
 # clean: Remove build artifacts.
-# $FILENAME.go: Build just $FILENAME.
+# $FILENAME: Build just $FILENAME.
 # build: Create build directory.
 
 GOC=go build -compiler gccgo
@@ -9,7 +9,7 @@ GOFLAGS=
 
 .PHONY: all
 
-all: build basename.go cat.go cp.go dirname.go echo.go false.go head.go mkdir.go nl.go pwd.go seq.go sleep.go tail.go tee.go touch.go true.go xxd.go yes.go
+all: build basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
 
 .PHONY: clean
 
@@ -19,56 +19,56 @@ clean:
 build:
 	mkdir -p build
 
-basename.go:
+basename:
 	${GOC}  -o build/basename basename.go
 
-cat.go:
+cat:
 	${GOC} -o build/cat cat.go
 
-cp.go:
+cp:
 	${GOC} -o build/cp cp.go
 
-dirname.go:
+dirname:
 	${GOC} -o build/dirname dirname.go
 
-echo.go:
+echo:
 	${GOC} -o build/echo echo.go
 
-false.go:
+false:
 	${GOC} -o build/false false.go
 
-head.go:
+head:
 	${GOC} -o build/head head.go
 
-mkdir.go:
+mkdir:
 	${GOC} -o build/mkdir mkdir.go
 
-nl.go:
+nl:
 	${GOC} -o build/nl nl.go
 
-pwd.go:
+pwd:
 	${GOC} -o build/pwd pwd.go
 
-seq.go:
+seq:
 	${GOC} -o build/seq seq.go
 
-sleep.go:
+sleep:
 	${GOC} -o build/sleep sleep.go
 
-tail.go:
+tail:
 	${GOC} -o build/tail tail.go
 
-tee.go:
+tee:
 	${GOC} -o build/tee tee.go
 
-touch.go:
+touch:
 	${GOC} -o build/touch touch.go
 
-true.go:
+true:
 	${GOC} -o build/true true.go
 
-xxd.go:
+xxd:
 	${GOC} -o build/xxd xxd.go
 
-yes.go:
+yes:
 	${GOC} -o build/yes yes.go
