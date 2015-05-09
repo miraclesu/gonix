@@ -40,7 +40,7 @@ His project is way more mature than mine and he said he'd love some help.
 This is just my little weekend project, so I won't be active much besides a few hours on the weekends when I have free time.
 I may eventually lose interest in the project, probably in a few months (it's happened to me before), but I'm doing this for fun anyway, not as a fulltime job.
 Things I'm not planning on ever writing:
-* a kernal
+* a kernel
 * a shell
 * networking tools (ping, ip...)
 * hardware tools (dd, du, df...)
