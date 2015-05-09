@@ -15,7 +15,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * pwd [works]
 * seq [works]
 * sleep [**complete**]
-* tail [works]
+* tail [works inefficiently, needs to be rewritten like head]
 * tee [**complete**]
 * touch [works]
 * true [**complete**]
