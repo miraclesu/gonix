@@ -9,7 +9,7 @@ GOFLAGS=
 
 .PHONY: all
 
-all: build basename cat cp dirname echo false head md5sum mkdir nl pwd rm seq sleep tail tee touch true xxd yes
+all: build basename cat cp dirname echo false head md5sum mkdir nl pwd rm seq sha1sum sleep tail tee touch true xxd yes
 
 .PHONY: clean
 
@@ -57,6 +57,9 @@ rm:
 
 seq:
 	${GOC} -o build/seq seq.go
+
+sha1sum:
+	${GOC} -o build/sha1sum sha1sum.go
 
 sleep:
 	${GOC} -o build/sleep sleep.go
