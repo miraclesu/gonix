@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"log"
 	"os/exec"
+	"strings"
 	"testing"
 )
 
@@ -63,15 +64,18 @@ func TestEcho(t *testing.T) {
 	cases := []struct {
 		in, want string
 	}{
-		{"hola", "hola "},
-		{"chao", "chao "},
-		{"hola chao", "hola chao "},
-		{"hola chao si", "hola chao si "},
-		{"", " "},
+		{"hola", "hola\n"},
+		{"chao", "chao\n"},
+		{"hola chao", "hola chao\n"},
+		{"hola chao si", "hola chao si\n"},
+		{"-n hola chao si", "hola chao si"},
+		{"-n -n hola chao si", "hola chao si"},
+		{"-n hola -n chao si", "hola -n chao si"},
+		{"", "\n"},
 	}
 	for _, c := range cases {
 		var out bytes.Buffer
-		cmd := exec.Command("../build/echo", c.in)
+		cmd := exec.Command("../build/echo", strings.Split(c.in, " ")...)
 		cmd.Stdout = &out
 		err := cmd.Run()
 		if err != nil {
