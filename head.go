@@ -8,6 +8,7 @@ import "bufio"
 
 func main() {
 	n := flag.Int("n", 10, "number of lines")
+	q := flag.Bool("q", false, "quiet")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
 		//Using stdin isn't working for some reason so piping to head won't work.
@@ -25,7 +26,7 @@ func main() {
 			file, err := os.Open(flag.Arg(i))
 			if err != nil {log.Fatal(err)}
 			reader := bufio.NewReader(file)
-			if len(flag.Args()) > 1 {
+			if !(*q) && len(flag.Args()) > 1 {
 				if i > 0 {fmt.Println()}                //Seperate the files with a blank line
 				fmt.Printf("==> %s <==\n", flag.Arg(i)) //Print the name of each file
 			}
