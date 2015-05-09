@@ -54,11 +54,16 @@ Many tools do not exist and many features are not implemented.
 I used "flag" to do the flag-parsing, it is a little strict (ie. no combining flags like -xyz instead of -x -y -z).
 
 # Building
-To keep the binary sizes small (around 20-30kb each, on my PC) I use the gccgo compiler, so you need to have that installed.
+To keep the binary sizes small (around 20-30kb each, on my PC) I recommend using the gccgo compiler, but it is not required.
 
 Build the project:
 ```sh
 $ make
+```
+
+Alternatively, build with gccgo:
+```sh
+$ make GCFLAGS="-compiler gccgo"
 ```
 
 It will compile each program and the binaries will be placed in the build directory.
