@@ -25,6 +25,10 @@ func main() {
 			file, err := os.Open(flag.Arg(i))
 			if err != nil {log.Fatal(err)}
 			reader := bufio.NewReader(file)
+			if len(flag.Args()) > 1 {
+				if i > 0 {fmt.Println()}                //Seperate the files with a blank line
+				fmt.Printf("==> %s <==\n", flag.Arg(i)) //Print the name of each file
+			}
 			for linecounter := 0; ; {
 				line, isPrefix, err := reader.ReadLine()
 				if err != nil {break}
