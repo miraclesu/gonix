@@ -29,10 +29,24 @@ Unimplemented:
 * ls
 * more
 
-# Misc
+# Misc.
 Someone else had the same idea (of writing all the tools in Go) a while before mine.
 https://github.com/EricLagerg/go-coreutils
 His project is way more mature than mine and he said he'd love some help.
+
+
+## Plans
+This is just my little weekend project, so I won't be active much besides a few hours on the weekends when I have free time.
+I may eventually lose interest in the project, probably in a few months (it's happened to me before), but I'm doing this for fun anyway, not as a fulltime job.
+Things I'm not planning on ever writing:
+* a kernal
+* a shell
+* networking tools (ping, ip...)
+* hardware tools (dd, du, df...)
+* text editors (ed, vi, emacs...)
+* small languages (bc, dc, sed, awk...)
+
+and other complicated things. I'm focusing mainly on the text tools, some of the file tools (ls, cp, mkdir...), and a few other simple tools.
 
 # Bugs
 Many tools do not exist and many features are not implemented.
