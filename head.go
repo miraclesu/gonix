@@ -11,8 +11,6 @@ func main() {
 	q := flag.Bool("q", false, "quiet")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		//Using stdin isn't working for some reason so piping to head won't work.
-		//I need to fix this section
 		reader := bufio.NewReader(os.Stdin)
 		for linecounter := 0; ; {
 			line, isPrefix, err := reader.ReadLine()
