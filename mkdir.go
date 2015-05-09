@@ -1,9 +1,11 @@
 package main
 
 import "os"
-import "flag"
 
 func main() {
-	flag.Parse()
-	os.Mkdir(flag.Arg(0), 0644)
+	if len(os.Args)>0 {
+		for i:=1; i<len(os.Args); i++ {
+			os.Mkdir(os.Args[i], 0644)
+		}
+	}
 }
