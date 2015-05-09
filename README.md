@@ -50,6 +50,7 @@ Things I'm not planning on ever writing:
 and other complicated things. I'm focusing mainly on the text tools, some of the file tools (ls, cp, mkdir...), and a few other simple tools.
 
 # Bugs
+In general, expect there to be many bugs.
 Many tools do not exist and many features are not implemented.
 I used "flag" to do the flag-parsing, it is a little strict (ie. no combining flags like -xyz instead of -x -y -z).
 
