@@ -16,6 +16,7 @@ UTILS = $(patsubst %.go, $(BUILD_DIR)/%, $(GO_FILES))
 all: $(UTILS)
 
 $(BUILD_DIR)/%: %.go
+	@mkdir -p $(BUILD_DIR)
 	${GC} $(GCFLAGS) -o $@ $<
 
 clean:
