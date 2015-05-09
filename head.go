@@ -2,46 +2,35 @@ package main
 
 import "os"
 import "fmt"
-import "io/ioutil"
-import "strings"
+import "log"
 import "flag"
+import "bufio"
 
 func main() {
 	n := flag.Int("n", 10, "number of lines")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		bytes, _ := ioutil.ReadAll(os.Stdin)
-		lines := strings.Split(string(bytes), "\n")
-		var end int
-		//Make sure we don't print more lines than there are
-		if *n > len(lines)-1 {
-			end = len(lines) - 1
-		} else {
-			end = *n
+		//Using stdin isn't working for some reason so piping to head won't work.
+                //I need to fix this section
+		reader := bufio.NewReader(os.Stdin)
+		for linecounter := 0; ; {
+			line, isPrefix, err := reader.ReadLine()
+			if err != nil {break}
+			if linecounter >= *n {break}
+			if !isPrefix {break}
+			fmt.Printf("%s\n", string(line))
 		}
-		for i := 0; i < end; i++ {
-			fmt.Println(lines[i])
-		}
-	} else if len(flag.Args()) > 0 {
-		for j := 0; j < len(flag.Args()); j++ {
-			bytes, _ := ioutil.ReadFile(flag.Arg(j))
-			lines := strings.Split(string(bytes), "\n")
-			var end int
-			//Make sure we don't print more lines than there are
-			if *n > len(lines)-1 {
-				end = len(lines) - 1
-			} else {
-				end = *n
-			}
-			//Only show a title for each file if there are multiple files
-			if len(flag.Args()) > 1 {
-				fmt.Printf("==> %s <==\n", flag.Arg(j))
-			}
-			for i := 0; i < end; i++ {
-				fmt.Println(lines[i])
-			}
-			if j < len(flag.Args())-1 {
-				fmt.Printf("\n")
+	} else {
+		for i := 0; i < len(flag.Args()); i++ {
+			file, err := os.Open(flag.Arg(i))
+			if err != nil {log.Fatal(err)}
+			reader := bufio.NewReader(file)
+			for linecounter := 0; ; {
+				line, isPrefix, err := reader.ReadLine()
+				if err != nil {break}
+				if linecounter >= *n {break}
+				if !isPrefix {linecounter++} //Don't increment linecounter if the line isn't finished
+				fmt.Printf("%s\n", string(line))
 			}
 		}
 	}
