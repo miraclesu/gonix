@@ -1,13 +1,14 @@
-package main 
+package main
+
 import (
-	"unicode"
-	"log"
-	"os"
-	"io/ioutil"
-	"io"
+	"encoding/base64"
 	"flag"
 	"fmt"
-	"encoding/base64"
+	"io"
+	"io/ioutil"
+	"log"
+	"os"
+	"unicode"
 )
 
 func base64Encode(src []byte) []byte {
@@ -63,7 +64,7 @@ func main() {
 	//TODO: -w
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		readAndHandle(os.Stdin, flagDecode, flagIgnore)	
+		readAndHandle(os.Stdin, flagDecode, flagIgnore)
 	} else {
 		for i := 0; i < len(flag.Args()); i++ {
 			file, err := os.Open(flag.Args()[i])
