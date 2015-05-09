@@ -49,6 +49,9 @@ nl:
 pwd:
 	${GOC} -o build/pwd pwd.go
 
+rm:
+	${GOC} -o build/rm rm.go
+
 seq:
 	${GOC} -o build/seq seq.go
 
