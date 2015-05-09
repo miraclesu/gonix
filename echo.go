@@ -15,9 +15,9 @@ func main() {
 
 	// echo each non-cmd/flag arg
 	for i, a := range os.Args[argsEnd:] {
-		c := " "
+		c := ' '
 		if i == argsEnd+echoLen {
-			c = "\n"
+			c = '\n'
 		}
 		fmt.Printf("%s%c", a, c)
 	}
