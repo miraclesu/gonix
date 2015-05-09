@@ -11,7 +11,7 @@ func main() {
 		if pathname[len(pathname)-1] == '/' {
 			pathname = pathname[:1]
 		}
-		base := path.Base(os.Args[1])
+		base := path.Base(pathname)
 		fmt.Println(base)
 	}
 }
