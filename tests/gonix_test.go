@@ -65,6 +65,8 @@ func TestEcho(t *testing.T) {
   }{
     {"hola", "hola \n"},
     {"chao", "chao \n"},
+    {"hola chao", "hola chao \n"},
+    {"hola chao si", "hola chao si \n"},
     {"", " \n"},
   }
   for _, c := range cases {
