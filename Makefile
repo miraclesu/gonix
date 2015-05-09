@@ -11,6 +11,9 @@ GOFLAGS=
 
 all: build basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
 
+testing:
+	cd tests && go test
+
 .PHONY: clean
 
 clean:
