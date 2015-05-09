@@ -45,10 +45,10 @@ func readAndHandle(reader io.Reader, flagDecode *bool, flagIgnore *bool) {
 	if *flagDecode {
 		decoded, err := base64Decode(toHandle)
 		checkError(err)
-		fmt.Printf("%s", string(decoded))
+		fmt.Printf("%s\n", string(decoded))
 	} else {
 		encoded := base64Encode(toHandle)
-		fmt.Printf("%s", string(encoded))
+		fmt.Printf("%s\n", string(encoded))
 	}
 }
 func checkError(err error) {
