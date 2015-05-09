@@ -9,7 +9,7 @@ GOFLAGS=
 
 .PHONY: all
 
-all: build basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
+all: build base64 basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
 
 .PHONY: clean
 
@@ -18,6 +18,9 @@ clean:
 
 build:
 	mkdir -p build
+
+base64:
+	${GOC} -o build/base64 base64.go
 
 basename:
 	${GOC}  -o build/basename basename.go
