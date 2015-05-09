@@ -11,6 +11,9 @@ GOFLAGS=
 
 all: build base64 basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
 
+testing:
+	cd tests && go test
+
 .PHONY: clean
 
 clean:
@@ -43,6 +46,9 @@ false:
 head:
 	${GOC} -o build/head head.go
 
+md5sum:
+	${GOC} -o build/md5sum md5sum.go
+
 mkdir:
 	${GOC} -o build/mkdir mkdir.go
 
@@ -52,8 +58,14 @@ nl:
 pwd:
 	${GOC} -o build/pwd pwd.go
 
+rm:
+	${GOC} -o build/rm rm.go
+
 seq:
 	${GOC} -o build/seq seq.go
+
+sha1sum:
+	${GOC} -o build/sha1sum sha1sum.go
 
 sleep:
 	${GOC} -o build/sleep sleep.go

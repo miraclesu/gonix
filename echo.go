@@ -4,8 +4,21 @@ import "os"
 import "fmt"
 
 func main() {
-	for i := 1; i < len(os.Args); i++ {
-		fmt.Printf("%s ", os.Args[i])
+	var argsEnd int = 1
+	var echoLen int = len(os.Args)
+
+	// no newline flag
+	if os.Args[1] == "-n" {
+		argsEnd = 2
+		echoLen = echoLen - 1
 	}
-	fmt.Printf("\n")
+
+	// echo each non-cmd/flag arg
+	for i, a := range os.Args[argsEnd:] {
+		c := ' '
+		if i == argsEnd+echoLen {
+			c = '\n'
+		}
+		fmt.Printf("%s%c", a, c)
+	}
 }

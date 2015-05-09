@@ -6,15 +6,18 @@ If a program is marked complete, then most/all the standard features are impleme
 * base64 [works]
 * basename [works]
 * cat [works]
-* cp [works, very incomplete]
+* cp [works, very incomplete, not recursive]
 * dirname [**complete**]
 * echo [works]
 * false [**complete**]
 * head [works]
+* md5sum [works]
 * mkdir [works]
 * nl [works]
 * pwd [works]
+* rm [works, very incomplete, not recursive]
 * seq [works]
+* sha1sum [works]
 * sleep [**complete**]
 * tail [works inefficiently, needs to be rewritten like head]
 * tee [**complete**]
@@ -24,12 +27,13 @@ If a program is marked complete, then most/all the standard features are impleme
 * yes [**complete**]
 
 Unimplemented:
-* bc
-* dc
-* ed
 * ls
 * more
-* rm
+
+# Misc
+Someone else had the same idea (of writing all the tools in Go) a while before mine.
+https://github.com/EricLagerg/go-coreutils
+His project is way more mature than mine and he said he'd love some help.
 
 # Bugs
 Many tools do not exist and many features are not implemented.

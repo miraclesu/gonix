@@ -6,7 +6,11 @@ import "path"
 
 func main() {
 	if len(os.Args) > 1 {
-		dir := path.Dir(os.Args[1])
-		fmt.Println(dir)
+		pathname := os.Args[1]
+		//If the given path ends in a slash, delete the last character of it (the slash)
+		if pathname[len(pathname)-1] == '/' {
+			pathname = pathname[:1]
+		}
+		fmt.Println(path.Dir(pathname))
 	}
 }
