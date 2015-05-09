@@ -11,6 +11,9 @@ GOFLAGS=
 
 all: build basename cat cp dirname echo false head md5sum mkdir nl pwd rm seq sha1sum sleep tail tee touch true xxd yes
 
+testing:
+	cd tests && go test
+
 .PHONY: clean
 
 clean:
