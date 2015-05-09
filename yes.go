@@ -1,19 +1,17 @@
 package main
 
-import "os"
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
 func main() {
-	if len(os.Args) == 1 {
-		for {
-			fmt.Println("y")
-		}
-	} else {
-		for {
-			for i := 1; i < len(os.Args); i++ {
-				fmt.Printf("%s ", os.Args[i])
-			}
-			fmt.Printf("\n")
-		}
+	msg := "y"
+	if len(os.Args) > 1 {
+		msg = strings.Join(os.Args[1:], " ")
+	}
+	for {
+		fmt.Println(msg)
 	}
 }
