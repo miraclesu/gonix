@@ -37,9 +37,9 @@ I used "flag" to do the flag-parsing, it is a little strict (ie. no combining fl
 # Building
 To keep the binary sizes small (around 20-30kb each, on my PC) I use the gccgo compiler, so you need to have that installed.
 
-Build the project with make:
+Build the project with the build script:
 ```sh
-$ make
+$ sh build.sh
 ```
 
 It will compile each program and the binaries will be placed in the same directory.
