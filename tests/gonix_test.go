@@ -63,11 +63,11 @@ func TestEcho(t *testing.T) {
   cases := []struct {
     in, want string
   }{
-    {"hola", "hola \n"},
-    {"chao", "chao \n"},
-    {"hola chao", "hola chao \n"},
-    {"hola chao si", "hola chao si \n"},
-    {"", " \n"},
+    {"hola", "hola "},
+    {"chao", "chao "},
+    {"hola chao", "hola chao "},
+    {"hola chao si", "hola chao si "},
+    {"", " "},
   }
   for _, c := range cases {
     var out bytes.Buffer
