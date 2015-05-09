@@ -9,7 +9,7 @@ GOFLAGS=
 
 .PHONY: all
 
-all: build basename cat cp dirname echo false head mkdir nl pwd seq sleep tail tee touch true xxd yes
+all: build basename cat cp dirname echo false head mkdir nl pwd rm seq sleep tail tee touch true xxd yes
 
 .PHONY: clean
 
