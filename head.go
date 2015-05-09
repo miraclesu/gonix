@@ -17,7 +17,7 @@ func main() {
 			line, isPrefix, err := reader.ReadLine()
 			if err != nil {break}
 			if linecounter >= *n {break}
-			if !isPrefix {break}
+			if !isPrefix {linecounter++}
 			fmt.Printf("%s\n", string(line))
 		}
 	} else {
