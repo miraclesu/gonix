@@ -9,7 +9,7 @@ GOFLAGS=
 
 .PHONY: all
 
-all: build basename cat cp dirname echo false head mkdir nl pwd rm seq sleep tail tee touch true xxd yes
+all: build basename cat cp dirname echo false head md5sum mkdir nl pwd rm seq sleep tail tee touch true xxd yes
 
 .PHONY: clean
 
@@ -39,6 +39,9 @@ false:
 
 head:
 	${GOC} -o build/head head.go
+
+md5sum:
+	${GOC} -o build/md5sum md5sum.go
 
 mkdir:
 	${GOC} -o build/mkdir mkdir.go
