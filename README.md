@@ -5,7 +5,7 @@ Clones of the *nix tools written in go
 If a program is marked complete, then most/all the standard features are implemented.
 * basename [works]
 * cat [works]
-* cp [works, very incomplete]
+* cp [works, very incomplete, not recursive]
 * dirname [**complete**]
 * echo [works]
 * false [**complete**]
@@ -13,6 +13,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * mkdir [works]
 * nl [works]
 * pwd [works]
+* rm [works, very incomplete, not recursive]
 * seq [works]
 * sleep [**complete**]
 * tail [works inefficiently, needs to be rewritten like head]
@@ -23,12 +24,8 @@ If a program is marked complete, then most/all the standard features are impleme
 * yes [**complete**]
 
 Unimplemented:
-* bc
-* dc
-* ed
 * ls
 * more
-* rm
 
 # Bugs
 Many tools do not exist and many features are not implemented.
