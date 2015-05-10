@@ -11,6 +11,8 @@ If a program is marked complete, then most/all the standard features are impleme
 * echo [works]
 * false [**complete**]
 * head [works]
+* ln [works]
+* ls [doesn't compile for all of us]
 * md5sum [works]
 * mkdir [works]
 * nl [works]
@@ -27,7 +29,6 @@ If a program is marked complete, then most/all the standard features are impleme
 * yes [**complete**]
 
 Unimplemented:
-* ls
 * more
 
 # Misc.
