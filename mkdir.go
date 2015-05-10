@@ -9,6 +9,7 @@ func main() {
 	flag.Parse()
 	if len(flag.Args())>0 {
 		for i:=0; i<len(flag.Args()); i++ {
+			err := nil
 			if (*pFlag) {
 				err := os.MkdirAll(flag.Arg(i), 0644)
 			} else {
