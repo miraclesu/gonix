@@ -10,9 +10,40 @@ import (
 	"testing"
 )
 
-func TestBase64(t *testing.T) {
+func TestBase64Decode(t *testing.T) {
+	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_decode")
 
-	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_")
+	if err != nil {
+		log.Fatal(err)
+	}
+	file.WriteString("aG9sYSBjaGFvCg==")
+
+	//TODO: test passing input by Stdin
+	cases := []struct {
+		in, want string
+	}{
+		{"aG9sYSBjaGFvCg==", "hola chao\n"},
+	}
+
+	for _, c := range cases {
+		var out bytes.Buffer
+		cmd := exec.Command("../build/base64", "-d", file.Name())
+		cmd.Stdout = &out
+		err := cmd.Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		got := out.String()
+		if got != c.want {
+			t.Errorf("base64 (%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+
+func TestBase64Encode(t *testing.T) {
+	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_encode")
 
 	if err != nil {
 		log.Fatal(err)
@@ -37,7 +68,6 @@ func TestBase64(t *testing.T) {
 
 		got := out.String()
 		if got != c.want {
-			t.Errorf("%q", string(got))
 			t.Errorf("base64 (%q) == %q, want %q", c.in, got, c.want)
 		}
 	}
