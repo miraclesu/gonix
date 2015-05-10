@@ -108,3 +108,29 @@ func TestTrue(t *testing.T) {
 		t.Errorf("true () == %q, want nil ", string(output))
 	}
 }
+
+func TestMd5SumString(t *testing.T) {
+
+	//TODO: pass input by stdin
+	cases := []struct {
+		in, want string
+	}{
+		{"hola", "686f6c61d41d8cd98f00b204e9800998ecf8427e\t\"hola\"\n"},
+		{"", ""},
+	}
+
+	for _, c := range cases {
+		var out bytes.Buffer
+		cmd := exec.Command("../build/md5sum", "-s", c.in)
+		cmd.Stdout = &out
+		err := cmd.Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		got := out.String()
+		if got != c.want {
+			t.Errorf("md5sum (%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
