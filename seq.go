@@ -4,10 +4,10 @@ import "os"
 import "fmt"
 
 func main() {
-	switch len(os.Args {
+	switch len(os.Args) {
 	case 2:
-		var end int
-		fmt.Sscanf(os.Args[1], "%d", &end)
+		var end int;
+		fmt.Sscanf(os.Args[1], "%d", &end);
 		for i := 1; i <= end; i++ {
 			fmt.Println(i)
 		}
