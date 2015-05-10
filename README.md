@@ -25,6 +25,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * tee [**complete**]
 * touch [works]
 * true [**complete**]
+* whoami [**complete**]
 * xxd [works]
 * yes [**complete**]
 
