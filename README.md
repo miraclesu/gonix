@@ -38,7 +38,7 @@ His project is way more mature than mine and he said he'd love some help.
 
 ## Plans
 This is just my little weekend project, so I won't be active much besides a few hours on the weekends when I have free time.
-I may eventually lose interest in the project, probably in a few months (it's happened to me before), but I'm doing this for fun anyway, not as a fulltime job.
+I will eventually lose interest in the project, probably in a month or two, but I'm doing this for fun anyway, not as a fulltime job or to ever actually replace anything.
 Things I'm not planning on ever writing:
 * a kernel
 * a shell
@@ -47,7 +47,13 @@ Things I'm not planning on ever writing:
 * text editors (ed, vi, emacs...)
 * small languages (bc, dc, sed, awk...)
 
-and other complicated things. I'm focusing mainly on the text tools, some of the file tools (ls, cp, mkdir...), and a few other simple tools.
+and other complicated things. I'm focusing mainly on the text tools, some of the file tools (ls, cp, mkdir...), and a few other simple tools. Earlier I was thinking of doing some of those things in the list, but changed my mind after realizing the amount of work it would take. I want this to stay a simple little weekend project.
+
+### Why publish something you aren't planning on finishing?
+By putting my project on the Internet, I am getting valuable advice and criticism that I wouldn't get if I only worked on my own. I'm not making a real operating system here or starting a years long project (for that, see GNU), but this is educational for me and anyone else working on it, which is better than leaving it to rot on my hard drive.
+
+#### Why do you keep talking about this anyway?
+This project has gotten much more attention than I was expecting, and I don't want to mislead anyone on what my plans for the project are.
 
 # Bugs
 In general, expect there to be many bugs.
