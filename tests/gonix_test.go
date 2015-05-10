@@ -2,11 +2,46 @@ package gonix
 
 import (
 	"bytes"
+	"io/ioutil"
 	"log"
+	"os"
 	"os/exec"
 	"strings"
 	"testing"
 )
+
+func TestBase64(t *testing.T) {
+
+	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	file.WriteString("hola")
+
+	//TODO: test passing input by stdin
+	cases := []struct {
+		in, want string
+	}{
+		{"hola", "aG9sYQ==\n"},
+	}
+
+	for _, c := range cases {
+		var out bytes.Buffer
+		cmd := exec.Command("../build/base64", file.Name())
+		cmd.Stdout = &out
+		err := cmd.Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		got := out.String()
+		if got != c.want {
+			t.Errorf("%q", string(got))
+			t.Errorf("base64 (%q) == %q, want %q", c.in, got, c.want)
+		}
+	}
+}
 
 func TestBasename(t *testing.T) {
 
