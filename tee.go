@@ -4,6 +4,7 @@ import "os"
 import "fmt"
 import "io/ioutil"
 import "flag"
+import "log"
 
 func main() {
 	flagAppend := flag.Bool("a", false, "append to file")
@@ -11,11 +12,13 @@ func main() {
 	bytes, _ := ioutil.ReadAll(os.Stdin)
 	for i := 0; i < len(flag.Args()); i++ {
 		if *flagAppend {
-			f, _ := os.OpenFile(flag.Args()[i], os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+			f, err := os.OpenFile(flag.Args()[i], os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+			if err != nil {log.Fatal(err)}
 			f.Write(bytes)
 			f.Close()
 		} else {
-			f, _ := os.OpenFile(flag.Args()[i], os.O_WRONLY|os.O_CREATE, 0644)
+			f, err := os.OpenFile(flag.Args()[i], os.O_WRONLY|os.O_CREATE, 0644)
+			if err != nil {log.Fatal(err)}
 			f.Write(bytes)
 			f.Close()
 		}
