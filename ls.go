@@ -98,7 +98,7 @@ func lookupGroupId(gid uint32) (string, error) {
 		constName := "_SC_GETGR_R_SIZE_MAX"
 		bufSize = C.sysconf(size)
 		if bufSize <= 0 || bufSize > 1<<20 {
-			return "", fmt.Errorf("user: unreasonable %s of %d", constName, bufSize)
+			return "", fmt.Errorf("Failed to allocate memory for %s of %d", constName, bufSize)
 		}
 	}
 
@@ -112,7 +112,7 @@ func lookupGroupId(gid uint32) (string, error) {
 		C.size_t(bufSize),
 		&result)
 	if rv != 0 {
-		return "", fmt.Errorf("group: lookup groupid %d", gid)
+		return "", fmt.Errorf("Group lookup failed %d", gid)
 	}
 	if result == nil {
 		return "", fmt.Errorf("err")
