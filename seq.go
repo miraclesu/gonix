@@ -1,30 +1,43 @@
 package main
 
-import "os"
+import (
+	"os"
+	"strconv"
+)
 import "fmt"
 
 func main() {
-	switch len(os.Args) {
-	case 2:
-		var end int;
-		fmt.Sscanf(os.Args[1], "%d", &end);
-		for i := 1; i <= end; i++ {
-			fmt.Println(i)
-		}
-	case 3:
-		var start, end int
-		fmt.Sscanf(os.Args[1], "%d", &start)
-		fmt.Sscanf(os.Args[2], "%d", &end)
-		for i := start; i <= end; i++ {
-			fmt.Println(i)
-		}
+	// TODO: Also handle floats.
+	start, inc, end := 1, 1, 0
+	nargs := len(os.Args)
+	switch nargs {
 	case 4:
-		var start, inc, end int
-		fmt.Sscanf(os.Args[1], "%d", &start)
-		fmt.Sscanf(os.Args[2], "%d", &inc)
-		fmt.Sscanf(os.Args[3], "%d", &end)
-		for i := start; i <= end; i += inc {
-			fmt.Println(i)
+		inc = parseInt(os.Args[2])
+		fallthrough
+	case 3:
+		start = parseInt(os.Args[1])
+		fallthrough
+	case 2:
+		end = parseInt(os.Args[nargs-1])
+	default:
+		msg := "missing operand"
+		if nargs > 4 {
+			msg = fmt.Sprintf("extra operand '%s'", os.Args[4])
 		}
+		fmt.Println("seq:", msg)
+		os.Exit(1)
 	}
+
+	for i := start; i <= end; i += inc {
+		fmt.Println(i)
+	}
+}
+
+func parseInt(a string) int {
+	i, err := strconv.Atoi(a)
+	if err != nil {
+		fmt.Println("seq:", err)
+		os.Exit(1)
+	}
+	return i
 }
