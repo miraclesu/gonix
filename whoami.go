@@ -6,6 +6,6 @@ import "log"
 
 func main() {
     u, err := user.Current()
-    if err != nul {log.Fatal(err)}
+    if err != nil {log.Fatal(err)}
     fmt.Println(u.Username)
 }
