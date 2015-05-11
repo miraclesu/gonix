@@ -6,6 +6,7 @@ If a program is marked complete, then most/all the standard features are impleme
 * base64 [works]
 * basename [works]
 * cat [works]
+* clear [**complete**]
 * cp [works, very incomplete, not recursive]
 * dirname [**complete**]
 * echo [works]
