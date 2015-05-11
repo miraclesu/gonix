@@ -4,7 +4,7 @@ Clones of the *nix tools written in go
 # Status
 If a program is marked complete, then most/all the standard features are implemented.
 * base64 [works]
-* basename [works]
+* basename [**complete**]
 * cat [works]
 * clear [**complete**]
 * cp [works, very incomplete, not recursive]
