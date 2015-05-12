@@ -3,11 +3,11 @@ package main
 import "os"
 import "fmt"
 import "io/ioutil"
-import "flag"
+import flag "github.com/ogier/pflag"
 import "log"
 
 func main() {
-	flagAppend := flag.Bool("a", false, "append to file")
+	flagAppend := flag.BoolP("append", "a", false, "append to file")
 	flag.Parse()
 	bytes, _ := ioutil.ReadAll(os.Stdin)
 	for i := 0; i < len(flag.Args()); i++ {
