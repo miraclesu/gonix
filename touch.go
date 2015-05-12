@@ -1,12 +1,12 @@
 package main
 
 import "os"
-import "flag"
+import flag "github.com/ogier/pflag"
 import "time"
 import "log"
 
 func main() {
-	cFlag := flag.Bool("c", false, "do not create file")
+	cFlag := flag.BoolP("no-create", "c", false, "do not create file")
 	flag.Parse()
 	if len(flag.Args()) > 0 {
 		for i := 0; i < len(flag.Args()); i++ {
