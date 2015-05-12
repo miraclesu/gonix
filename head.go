@@ -3,12 +3,12 @@ package main
 import "os"
 import "fmt"
 import "log"
-import "flag"
+import flag "github.com/ogier/pflag"
 import "bufio"
 
 func main() {
-	n := flag.Int("n", 10, "number of lines")
-	q := flag.Bool("q", false, "quiet")
+	n := flag.IntP("lines", "n", 10, "number of lines")
+	q := flag.BoolP("quiet", "q", false, "do not print filenames")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
 		reader := bufio.NewReader(os.Stdin)
