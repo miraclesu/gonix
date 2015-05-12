@@ -53,7 +53,11 @@ func calendar(month int, year int) {
 
 func main() {
 	flag.Parse()
-	if len(flag.Args())==1 {
+	if len(flag.Args())==0 {
+		year := int(time.Now().Year())
+		month := int(time.Now().Month())
+		calendar(month,year)
+	} else if len(flag.Args())==1 {
 		year, err := strconv.Atoi(flag.Arg(0))
 		if err!=nil {log.Fatal(err)}
 		for month:=1; month<=12; month++ {
