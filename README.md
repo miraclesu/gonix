@@ -66,6 +66,9 @@ I used "flag" to do the flag-parsing, it is a little strict (ie. no combining fl
 # Building
 To keep the binary sizes small (around 20-30kb each, on my PC) I recommend using the gccgo compiler, but it is not required.
 
+## Dependencies
+* pflag, https://github.com/ogier/pflag
+
 Build the project:
 ```sh
 $ make
