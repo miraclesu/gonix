@@ -48,7 +48,6 @@ func calendar(month int, year int) {
 		}
 	}
 	if weekday!=6 {fmt.Printf("\n")}
-	fmt.Printf("\n")
 }
 
 func main() {
