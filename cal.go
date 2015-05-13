@@ -68,5 +68,6 @@ func main() {
 		year, err := strconv.Atoi(flag.Arg(1))
 		if err!=nil {log.Fatal(err)}
 		calendar(month,year)
+		fmt.Println()
 	}
 }
