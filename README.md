@@ -94,7 +94,7 @@ Where x refers to the name of the program
 **WARNING:** Keep the programs in a directory **NOT** in your $PATH or they may end up being run *instead* of your system's commands.
 
 # License
-I am releasing this under the terms of the GNU GPLv3 license with **ABSOLUTELY NO WARRANTY OR LIABILITY**.
+I am releasing this under the terms of the GNU GPLv3+ license with **ABSOLUTELY NO WARRANTY OR LIABILITY**.
 I have included the license in the file LICENSE.md
 
 This is just one of my coding experiments and should not be used to actually replace your system's tools.
