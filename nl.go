@@ -4,10 +4,10 @@ import "os"
 import "fmt"
 import "io/ioutil"
 import "strings"
-import "flag"
+import flag "github.com/ogier/pflag"
 
 func main() {
-	bFlag := flag.String("b", "t", "style")
+	bFlag := flag.StringP("body-numbering", "b", "t", "style")
 	flag.Parse()
 	if len(flag.Args()) == 0 {
 		bytes, _ := ioutil.ReadAll(os.Stdin)
