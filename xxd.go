@@ -3,7 +3,7 @@ package main
 import "os"
 import "fmt"
 import "io/ioutil"
-import "flag"
+import flag "github.com/ogier/pflag"
 
 func safestring(bytes []byte) string {
 	// This function replaces non printable characters with dots.
