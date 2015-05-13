@@ -61,6 +61,7 @@ func main() {
 		if err!=nil {log.Fatal(err)}
 		for month:=1; month<=12; month++ {
 			calendar(month,year)
+			fmt.Println()
 		}
 	} else if len(flag.Args())==2 {
 		month, err := strconv.Atoi(flag.Arg(0))
@@ -68,6 +69,5 @@ func main() {
 		year, err := strconv.Atoi(flag.Arg(1))
 		if err!=nil {log.Fatal(err)}
 		calendar(month,year)
-		fmt.Println()
 	}
 }
