@@ -10,7 +10,26 @@ import (
 	"testing"
 )
 
+type testCase struct {
+	in, want string
+}
+
+func assert(t *testing.T, name string, cmd *exec.Cmd, c testCase) {
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	got := out.String()
+	if got != c.want {
+		t.Errorf("%s (%q) == %q, want %q", name, c.in, got, c.want)
+	}
+}
+
 func TestBase64Decode(t *testing.T) {
+	name := "base64 decode"
 	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_decode")
 
 	if err != nil {
@@ -18,30 +37,24 @@ func TestBase64Decode(t *testing.T) {
 	}
 	file.WriteString("aG9sYSBjaGFvCg==")
 
-	//TODO: test passing input by Stdin
-	cases := []struct {
-		in, want string
-	}{
+	cases := []testCase{
 		{"aG9sYSBjaGFvCg==", "hola chao\n"},
 	}
 
+	cmd := new(exec.Cmd)
 	for _, c := range cases {
-		var out bytes.Buffer
-		cmd := exec.Command("../build/base64", "-d", file.Name())
-		cmd.Stdout = &out
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		got := out.String()
-		if got != c.want {
-			t.Errorf("base64 (%q) == %q, want %q", c.in, got, c.want)
-		}
+		cmd = exec.Command("../build/base64", "-d", file.Name())
+		assert(t, name, cmd, c)
+		cmd = exec.Command("../build/base64", "-d")
+		stdin, _ := cmd.StdinPipe()
+		stdin.Write([]byte(c.in))
+		stdin.Close()
+		assert(t, name, cmd, c)
 	}
 }
 
 func TestBase64Encode(t *testing.T) {
+	name := "base64 encode"
 	file, err := ioutil.TempFile(os.TempDir(), "testing_base64_encode")
 
 	if err != nil {
@@ -49,85 +62,70 @@ func TestBase64Encode(t *testing.T) {
 	}
 	file.WriteString("hola")
 
-	//TODO: test passing input by stdin
-	cases := []struct {
-		in, want string
-	}{
+	cases := []testCase{
 		{"hola", "aG9sYQ==\n"},
 	}
 
+	cmd := new(exec.Cmd)
 	for _, c := range cases {
-		var out bytes.Buffer
-		cmd := exec.Command("../build/base64", file.Name())
-		cmd.Stdout = &out
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
+		cmd = exec.Command("../build/base64", file.Name())
+		assert(t, name, cmd, c)
+		cmd = exec.Command("../build/base64")
+		stdin, _ := cmd.StdinPipe()
+		stdin.Write([]byte(c.in))
+		stdin.Close()
+		assert(t, name, cmd, c)
+	}
 
-		got := out.String()
-		if got != c.want {
-			t.Errorf("base64 (%q) == %q, want %q", c.in, got, c.want)
-		}
+	wrapCases := []testCase{
+		{"hola", "aG9\nsYQ\n==\n"},
+	}
+
+	for _, c := range wrapCases {
+		cmd = exec.Command("../build/base64", "-w", "3", file.Name())
+		assert(t, name, cmd, c)
+		cmd = exec.Command("../build/base64", "-w", "3")
+		stdin, _ := cmd.StdinPipe()
+		stdin.Write([]byte(c.in))
+		stdin.Close()
+		assert(t, name, cmd, c)
 	}
 }
 
 func TestBasename(t *testing.T) {
-
-	cases := []struct {
-		in, want string
-	}{
+	name := "basename"
+	cases := []testCase{
 		{"hola.txt", "hola.txt\n"},
 		{"tmp/chao.txt", "chao.txt\n"},
 		{"", ".\n"},
 	}
-	for _, c := range cases {
-		var out bytes.Buffer
-		cmd := exec.Command("../build/basename", c.in)
-		cmd.Stdout = &out
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		got := out.String()
-		if got != c.want {
-			t.Errorf("basename (%q) == %q, want %q", c.in, got, c.want)
-		}
+	cmd := new(exec.Cmd)
+	for _, c := range cases {
+		cmd = exec.Command("../build/basename", c.in)
+		assert(t, name, cmd, c)
 	}
 }
 
 func TestDirname(t *testing.T) {
-
-	cases := []struct {
-		in, want string
-	}{
+	name := "dirname"
+	cases := []testCase{
 		{"/tmp/hola.txt", "/tmp\n"},
 		{"/tmp/", "/\n"},
 		{"/tmp", "/\n"},
 		{"", ".\n"},
 	}
-	for _, c := range cases {
-		var out bytes.Buffer
-		cmd := exec.Command("../build/dirname", c.in)
-		cmd.Stdout = &out
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		got := out.String()
-		if got != c.want {
-			t.Errorf("dirname (%q) == %q, want %q", c.in, got, c.want)
-		}
+	cmd := new(exec.Cmd)
+	for _, c := range cases {
+		cmd = exec.Command("../build/dirname", c.in)
+		assert(t, name, cmd, c)
 	}
 }
 
 func TestEcho(t *testing.T) {
-
-	cases := []struct {
-		in, want string
-	}{
+	name := "echo"
+	cases := []testCase{
 		{"hola", "hola\n"},
 		{"chao", "chao\n"},
 		{"hola chao", "hola chao\n"},
@@ -137,19 +135,11 @@ func TestEcho(t *testing.T) {
 		{"-n hola -n chao si", "hola -n chao si"},
 		{"", "\n"},
 	}
-	for _, c := range cases {
-		var out bytes.Buffer
-		cmd := exec.Command("../build/echo", strings.Split(c.in, " ")...)
-		cmd.Stdout = &out
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		got := out.String()
-		if got != c.want {
-			t.Errorf("echo (%q) == %q, want %q", c.in, got, c.want)
-		}
+	cmd := new(exec.Cmd)
+	for _, c := range cases {
+		cmd = exec.Command("../build/echo", strings.Split(c.in, " ")...)
+		assert(t, name, cmd, c)
 	}
 }
 
@@ -176,9 +166,7 @@ func TestTrue(t *testing.T) {
 func TestMd5SumString(t *testing.T) {
 
 	//TODO: pass input by stdin
-	cases := []struct {
-		in, want string
-	}{
+	cases := []testCase{
 		{"hola", "686f6c61d41d8cd98f00b204e9800998ecf8427e\t\"hola\"\n"},
 		{"", ""},
 	}
